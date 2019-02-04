@@ -1,0 +1,55 @@
+# WARNING: This configuration file is managed by Puppet. Any changes to this
+# file WILL BE OVERWRITTEN. Contact the OPs team to make changes to this file
+# persistant.
+
+[jmx]
+<% unless @jmx_username.nil? -%>
+username = <%= @jmx_username %>
+<% end -%>
+<% unless @jmx_password.nil? -%>
+password = <%= @jmx_password %>
+<% end -%>
+<% unless @jmx_port.nil? -%>
+port = <%= @jmx_port %>
+<% end -%>
+
+[agents]
+<% unless @agents_http_timeout.nil? -%>
+http_timeout = <%= @agents_http_timeout %>
+<% end -%>
+
+[collection]
+<% unless @collection_nodelist_poll_period.nil? -%>
+nodelist_poll_period = <%= @collection_nodelist_poll_period %>
+<% end -%>
+
+[cassandra]
+<% unless @cassandra_seed_hosts.nil? -%>
+seed_hosts = <%= @cassandra_seed_hosts.join(',') %>
+<% end -%>
+<% unless @cassandra_cql_port.nil? -%>
+cql_port = <%= @cassandra_cql_port %>
+<% end -%>
+<% unless @cassandra_username.nil? -%>
+username = <%= @cassandra_username %>
+<% end -%>
+<% unless @cassandra_password.nil? -%>
+password = <%= @cassandra_password %>
+<% end -%>
+
+[storage_cassandra]
+<% unless @storage_cassandra_local_dc_pref.nil? -%>
+local_dc_pref = <%= @storage_cassandra_local_dc_pref %>
+<% end -%>
+<% unless @storage_cassandra_keyspace.nil? -%>
+keyspace = <%= @storage_cassandra_keyspace %>
+<% end -%>
+<% unless @storage_cassandra_seed_hosts.nil? -%>
+seed_hosts = <%= @storage_cassandra_seed_hosts.join(',') %>
+<% end -%>
+<% unless @storage_cassandra_username.nil? -%>
+username = <%= @storage_cassandra_username %>
+<% end -%>
+<% unless @storage_cassandra_password.nil? -%>
+password = <%= @storage_cassandra_password %>
+<% end -%>

@@ -1,0 +1,4 @@
+dc: Analytics
+
+dse::dse_default::spark_enabled: 1
+dse::dse_default::cfs_enabled: 1

@@ -1,0 +1,46 @@
+# WARNING: This configuration file is managed by Puppet. Any changes to this
+# file WILL BE OVERWRITTEN. Contact the OPs team to make changes to this file
+# persistant.
+
+<% unless @opscenter_master_ip.nil? -%>
+stomp_interface: <%= @opscenter_master_ip %>
+<% end -%>
+<% unless @cassandra_conf_location.nil? -%>
+cassandra_conf: <%= @cassandra_conf_location %>
+<% end -%>
+<% unless @cassandra_log_location.nil? -%>
+cassandra_log_location: <%= @cassandra_log_location %>
+<% end -%>
+<% unless @opscenter_keyspace.nil? -%>
+storage_keyspace: <% @opscenter_keyspace %>
+<% end -%>
+<% unless @opscenter_cassandra_contact_points.nil? -%>
+hosts: <%= @opscenter_cassandra_contact_points %>
+<% end -%>
+<% unless @thrift_max_conns.nil? -%>
+thrift_max_conns: <%= @thrift_max_conns %>
+<% end -%>
+<% unless @async_pool_size.nil? -%>
+async_pool_size: <%= @async_pool_size %>
+<% end -%>
+<% unless @async_queue_size.nil? -%>
+async_queue_size: <%= @async_queue_size %>
+<% end -%>
+<% unless @backup_staging_dir.nil? -%>
+backup_staging_dir: <%= @backup_staging_dir %>
+<% end -%>
+<% unless @tmp_dir.nil? -%>
+tmp_dir: <%= @tmp_dir %>
+<% end -%>
+<% unless @sstableloader_max_heap_size.nil? -%>
+sstableloader_max_heap_size: <%= @sstableloader_max_heap_size %>
+<% end -%>
+<% unless @backup_file_queue_max.nil? -%>
+backup_file_queue_max: <%= @backup_file_queue_max %>
+<% end -%>
+<% unless @tcp_response_timeout.nil? -%>
+tcp_response_timeout: <%= @tcp_response_timeout %>
+<% end -%>
+<% unless @pong_timeout_ms.nil? -%>
+pong_timeout_ms: <%= @pong_timeout_ms %>
+<% end -%>

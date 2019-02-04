@@ -1,0 +1,5 @@
+---
+cluster: "6003"
+role: "analytics"
+initial_token: 0
+rack: "room_c"

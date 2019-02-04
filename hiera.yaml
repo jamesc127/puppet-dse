@@ -1,0 +1,10 @@
+---
+:backends: yaml
+:yaml:
+  :datadir: ./hiera
+:hierarchy:
+  - nodes/%{hostname}
+  - clusters/%{cluster}
+  - roles/%{role}
+  - defaults
+:logger: console

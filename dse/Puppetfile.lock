@@ -1,0 +1,19 @@
+FORGE
+  remote: https://forgeapi.puppetlabs.com
+  specs:
+    puppet-archive (3.2.1)
+      puppetlabs-stdlib (< 6.0.0, >= 4.13.1)
+    puppetlabs-apt (6.3.0)
+      puppetlabs-stdlib (< 6.0.0, >= 4.16.0)
+      puppetlabs-translate (< 2.0.0, >= 1.0.0)
+    puppetlabs-java (3.3.0)
+      puppet-archive (< 4.0.0, >= 1.1.0)
+      puppetlabs-stdlib (< 6.0.0, >= 4.13.1)
+    puppetlabs-stdlib (5.2.0)
+    puppetlabs-translate (1.2.0)
+
+DEPENDENCIES
+  puppetlabs-apt (>= 6.3.0)
+  puppetlabs-java (>= 3.3.0)
+  puppetlabs-stdlib (>= 1.0.0)
+

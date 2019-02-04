@@ -1,0 +1,7 @@
+# WARNING: This configuration file is managed by Puppet. Any changes to this
+# file WILL BE OVERWRITTEN. Contact the OPs team to make changes to this file
+# persistant.
+
+<% unless @java_home.nil? -%>
+export JAVA_HOME="<%= @java_home %>"
+<% end -%>

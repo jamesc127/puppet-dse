@@ -1,0 +1,51 @@
+classes:
+  - opscenter::logback_xml
+  - opscenter::clusters
+  - opscenter::opscenterd_conf
+
+dc: opscenter_
+
+opscenter_home: "%{hiera('dse_home')}/opscenter"
+
+dse::cassandra::cassandra_yaml::num_tokens: 64
+
+opscenter::logback_xml::path: "%{hiera('opscenter_home')}/conf/logback.xml"
+opscenter::logback_xml::user: opsc
+opscenter::logback_xml::group: opsc
+opscenter::logback_xml::log_directory: "%{hiera('install_base')}/log/opscenter"
+
+opscenter::opscenterd_conf::path: "%{hiera('opscenter_home')}/conf/opscenterd.conf"
+opscenter::opscenterd_conf::user: opsc
+opscenter::opscenterd_conf::group: opsc
+opscenter::opscenterd_conf::webserver_port: 9080
+opscenter::opscenterd_conf::webserver_interface: 0.0.0.0
+opscenter::opscenterd_conf::webserver_ssl_keyfile: "%{hiera('install_base')}/opscenter/ssl/opscenter.key"
+opscenter::opscenterd_conf::webserver_ssl_certfile: "%{hiera('install_base')}/opscenter/ssl/opscenter.pem"
+opscenter::opscenterd_conf::webserver_ssl_port: 9443
+opscenter::opscenterd_conf::logging_log_path: "%{hiera('install_base')}/log/opscenter/opscenterd.log"
+opscenter::opscenterd_conf::authentication_enabled: true
+opscenter::opscenterd_conf::stats_reporter_interval: 0
+opscenter::opscenterd_conf::definitions_auto_update: false
+opscenter::opscenterd_conf::labs_enable_dashboard_preset_import_export: true
+opscenter::opscenterd_conf::agents_not_seen_threshold: 620
+opscenter::opscenterd_conf::agents_http_poll_period: 500
+
+opscenter::clusters::clusters:
+  sample:
+    cluster_name: "sample"
+    path: "%{hiera('opscenter_home')}/conf/clusters/sample.conf"
+    user: opsc
+    group: opsc
+    storage_cassandra_seed_hosts:
+    - 127.0.0.1
+    storage_cassandra_local_dc_pref: sample_dc
+    storage_cassandra_username: datastax_agent
+    storage_cassandra_password: agent_password
+    storage_cassandra_keyspace: opscenter_sample
+    agents_http_timeout: 20
+    collection_nodelist_poll_period: 1800
+    cassandra_cql_port: 9042
+    cassandra_seed_hosts:
+    - 127.0.0.1
+    cassandra_username: opscenter
+    cassandra_password: opscenter_password

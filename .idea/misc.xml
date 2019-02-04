@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PuppetProjectConfiguration">
+    <librarianPath>/Library/Ruby/Gems/2.3.0/gems/librarian-puppet-3.0.0/bin/librarian-puppet</librarianPath>
+  </component>
+</project>

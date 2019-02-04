@@ -1,0 +1,65 @@
+# opscenterd.conf
+
+# WARNING: This configuration file is managed by Puppet. Any changes to this
+# file WILL BE OVERWRITTEN. Contact the OPs team to make changes to this file
+# persistant.
+
+[webserver]
+<% unless @webserver_port.nil? -%>
+port = <%= @webserver_port %>
+<% end -%>
+<% unless @webserver_interface.nil? -%>
+interface = <%= @webserver_interface %>
+<% end -%>
+
+# The following settings can be used to enable ssl support for the opscenter
+# web application. Change these values to point to the ssl certificate and key
+# that you wish to use for your OpsCenter install, as well as the port you would like
+# to serve ssl traffic from.
+<% unless @webserver_ssl_keyfile.nil? -%>
+ssl_keyfile = <%= @webserver_ssl_keyfile %>
+<% end -%>
+<% unless @webserver_ssl_certfile.nil? -%>
+ssl_certfile = <%= @webserver_ssl_certfile %>
+<% end -%>
+<% unless @webserver_ssl_port.nil? -%>
+ssl_port = <%= @webserver_ssl_port %>
+<% end -%>
+
+[agents]
+<% unless @agents_not_seen_threshold.nil? -%>
+not_seen_threshold = <%= @agents_not_seen_threshold %>
+<% end -%>
+<% unless @agents_http_poll_period.nil? -%>
+http_poll_period = <%= @agents_http_poll_period %>
+<% end -%>
+
+[authentication]
+# Set this option to True to enable OpsCenter authentication.  A default admin
+# account will be created with the username "admin" and password "admin".
+# Accounts and roles can then be created and modified from within the web UI.
+<% unless @authentication_enabled.nil? -%>
+enabled = <%= @authentication_enabled ? 'True' : 'False' %>
+<% end -%>
+
+# To help us better understand the needs of users and to improve OpsCenter, OpsCenter
+# reports information about itself and the clusters it manages to a central DataStax
+# server.  This information is reported anonymously, and potentially sensitive
+# information, such as IP addresses, are hashed in a non-reversible way:
+# http://www.datastax.com/documentation/opscenter/help/statsReporterProperties.html
+[stat_reporter]
+# The interval setting determines how often statistics are reported.  To disable
+# reporting, set to 0
+<% unless @stats_reporter_interval.nil? -%>
+interval = <%= @stats_reporter_interval %>
+<% end -%>
+
+[definitions]
+<% unless @definitions_auto_update.nil? -%>
+auto_update = <%= @definitions_auto_update ? 'True' : 'False' %>
+<% end -%>
+
+[labs]
+<% unless @labs_enable_dashboard_preset_import_export.nil? -%>
+enable_dashboard_preset_import_export=<%= @labs_enable_dashboard_preset_import_export ? 'True' : 'False' %>
+<% end -%>

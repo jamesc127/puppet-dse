@@ -1,0 +1,131 @@
+install_base: /opt
+initial_token: ~
+
+role: unassigned
+cluster: unassigned
+
+dse_home: "%{hiera('install_base')}/dse"
+java_home: "%{hiera('install_base')}/java/jdk1.8.0_121"
+
+# Settings below are defaults for the *entire* environment
+# Override values in appropriate an host, role, or cluster YAML file
+
+dse::dse_yaml::path: "%{hiera('dse_home')}/resources/dse/conf/dse.yaml"
+dse::dse_yaml::max_memory_to_lock_mb: "2048"
+dse::dse_yaml::resource_level_latency_tracking_options_enabled: true
+dse::dse_yaml::resource_level_latency_tracking_options_refresh_rate_ms: 600000
+dse::dse_yaml::cluster_summary_stats_options_enabled: true
+dse::dse_yaml::cluster_summary_stats_options_refresh_rate_ms: 600000
+dse::dse_yaml::db_summary_stats_options_enabled: true
+dse::dse_yaml::db_summary_stats_options_refresh_rate_ms: 600000
+dse::dse_yaml::histogram_data_options_enabled: true
+dse::dse_yaml::histogram_data_options_refresh_rate_ms: 600000
+dse::dse_yaml::user_level_latency_tracking_options_enabled: true
+dse::dse_yaml::user_level_latency_tracking_options_refresh_rate_ms: 600000
+
+dse::dse_default::path: "%{hiera('dse_home')}/resources/dse/conf/dse.default"
+dse::dse_default::solr_enabled: 0
+dse::dse_default::spark_enabled: 0
+dse::dse_default::cfs_enabled: 0
+dse::dse_default::java_home: "%{hiera('java_home')}"
+dse::dse_default::spark_home: "%{hiera('dse_home')}/resources/spark"
+
+dse::dse_env_sh::path: "%{hiera('dse_home')}/bin/dse-env.sh"
+dse::dse_env_sh::java_home: "%{hiera('java_home')}"
+dse::dse_env_sh::dse_home: "%{hiera('dse_home')}"
+
+dse::cassandra::cassandra_yaml::path: "%{hiera('dse_home')}/resources/cassandra/conf/cassandra.yaml"
+dse::cassandra::cassandra_yaml::cluster_name: "%{hiera('cluster_name')}"
+dse::cassandra::cassandra_yaml::num_tokens: 1
+dse::cassandra::cassandra_yaml::initial_token: "%{hiera('initial_token')}"
+dse::cassandra::cassandra_yaml::authenticator: 'PasswordAuthenticator'
+dse::cassandra::cassandra_yaml::authorizer: 'CassandraAuthorizer'
+dse::cassandra::cassandra_yaml::data_file_directories:
+  - "%{hiera('install_base')}/data"
+dse::cassandra::cassandra_yaml::commitlog_directory: "%{hiera('install_base')}/commitlog"
+dse::cassandra::cassandra_yaml::saved_caches_directory: "%{hiera('install_base')}/saved_caches"
+dse::cassandra::cassandra_yaml::seeds:
+  - '127.0.0.1'
+dse::cassandra::cassandra_yaml::concurrent_reads: 128
+dse::cassandra::cassandra_yaml::concurrent_writes: 128
+dse::cassandra::cassandra_yaml::concurrent_counter_writes: 128
+dse::cassandra::cassandra_yaml::memtable_allocation_type: 'offheap_objects'
+dse::cassandra::cassandra_yaml::listen_address: "%{ipaddress}"
+dse::cassandra::cassandra_yaml::rpc_address: "%{ipaddress}"
+dse::cassandra::cassandra_yaml::endpoint_snitch: 'GossipingPropertyFileSnitch'
+dse::cassandra::cassandra_yaml::server_encryption_options:
+  internode_encryption: 'none'
+  keystore: 'resources/dse/SSL/KEYSTORE'
+  keystore_password: 'PASSWD'
+  truststore: 'resources/dse/SSL/KEYSTORE'
+  truststore_password: 'PASSWD'
+dse::cassandra::cassandra_yaml::client_encryption_options:
+  enabled: false
+  optional: false
+  keystore: 'resources/dse/SSL/KEYSTORE'
+  keystore_password: 'PASSWD'
+dse::cassandra::cassandra_yaml::commitlog_segment_recycling: false
+dse::cassandra::cassandra_yaml::memtable_cleanup_threshold: 0.40
+dse::cassandra::cassandra_yaml::memtable_flush_writers: 8
+dse::cassandra::cassandra_yaml::concurrent_compactors: 1
+dse::cassandra::cassandra_yaml::compaction_throughput_mb_per_sec: 0
+dse::cassandra::cassandra_yaml::stream_throughput_outbound_megabits_per_sec: 400
+dse::cassandra::cassandra_yaml::phi_convict_threshold: 10
+dse::cassandra::cassandra_yaml::internode_compression: 'none'
+dse::cassandra::cassandra_yaml::otc_coalescing_strategy: 'TIMEHORIZON'
+dse::cassandra::cassandra_yaml::otc_coalescing_window_us: 200
+
+dse::cassandra::cassandra_env::path: "%{hiera('dse_home')}/resources/cassandra/conf/cassandra-env.sh"
+dse::cassandra::cassandra_env::max_heap_size: '64G'
+dse::cassandra::cassandra_env::heap_newsize: '8G'
+dse::cassandra::cassandra_env::cassandra_heapdump_dir: "%{hiera('install_base')}/crash"
+dse::cassandra::cassandra_env::parallel_gc_threads: 16
+dse::cassandra::cassandra_env::conc_gc_threads: 16
+dse::cassandra::cassandra_env::initiating_heap_occupancy_percent: 25
+dse::cassandra::cassandra_env::loggc: "%{hiera('install_base')}/log/cassandra/gc.log"
+dse::cassandra::cassandra_env::jmxremote_password_file: '/etc/cassandra/jmxremote.password'
+dse::cassandra::cassandra_env::jna_tmpdir: "%{hiera('dse_home')}/tmp"
+dse::cassandra::cassandra_env::parallel_ref_proc_enabled: true
+dse::cassandra::cassandra_env::snappy_tmp_dir: "%{hiera('dse_home')}/tmp"
+dse::cassandra::cassandra_env::netty_tmp_dir: "%{hiera('dse_home')}/tmp"
+dse::cassandra::cassandra_env::java_io_tmp_dir: "%{hiera('dse_home')}/tmp"
+dse::cassandra::cassandra_env::jmx_notification_buffer_size: "3000"
+dse::cassandra::cassandra_env::cassandra_consistent_rangemovement: true
+dse::cassandra::cassandra_env::cassandra_rar_buffer_size: 4096
+
+dse::cassandra::cassandra_rackdc::path: "%{hiera('dse_home')}/resources/cassandra/conf/cassandra-rackdc.properties"
+dse::cassandra::cassandra_rackdc::dc: "%{hiera('dc')}"
+dse::cassandra::cassandra_rackdc::rack: "%{hiera('rack')}"
+
+dse::spark::spark_defaults::path: "%{hiera('dse_home')}/resources/spark/conf/spark-defaults.conf"
+
+dse::spark::spark_env::path: "%{hiera('dse_home')}/resources/spark/conf/spark-env.sh"
+dse::spark::spark_env::spark_worker_memory: "49152m"
+dse::spark::spark_env::spark_worker_cores: "16"
+dse::spark::spark_env::worker_dir: "%{hiera('install_base')}/log/spark/worker"
+dse::spark::spark_env::local_dirs: "%{hiera('install_base')}/log/spark/rdd"
+dse::spark::spark_env::worker_log_dir: "%{hiera('install_base')}/log/spark/worker"
+
+datastax_agent::address::path: "%{hiera('install_base')}/datastax-agent/conf/address.yaml"
+datastax_agent::address::opscenter_master_ip: "127.0.0.1"
+datastax_agent::address::cassandra_conf_location: "%{hiera('dse_home')}/resources/cassandra/conf/cassandra.yaml"
+datastax_agent::address::cassandra_log_location: "%{hiera('install_base')}/log/cassandra/system.log"
+datastax_agent::address::thrift_max_conns: 10
+datastax_agent::address::async_pool_size: 10
+datastax_agent::address::async_queue_size: 20000
+datastax_agent::address::backup_staging_dir: "%{hiera('install_base')}/backups/staging"
+datastax_agent::address::tmp_dir: "%{hiera('install_base')}/backups/tmp"
+datastax_agent::address::sstableloader_max_heap_size: "8G"
+datastax_agent::address::backup_file_queue_max: 512000
+datastax_agent::address::tcp_response_timeout: 600000
+datastax_agent::address::pong_timeout_ms: 30000
+
+datastax_agent::datastax_agent_default::path: "%{hiera('install_base')}/datastax-agent/conf/datastax-agent.default"
+datastax_agent::datastax_agent_default::java_home: "%{hiera('java_home')}"
+
+datastax_agent::log4j_properties::path: "%{hiera('install_base')}/datastax-agent/conf/log4j.properties"
+datastax_agent::log4j_properties::log_directory: "%{hiera('install_base')}/log/datastax-agent"
+
+datastax_agent::datastax_agent_env::path: "%{hiera('install_base')}/datastax-agent/conf/datastax-agent-env.sh"
+datastax_agent::datastax_agent_env::agent_heap: "512M"
+datastax_agent::datastax_agent_env::datastax_agent_heapdump_dir: "%{hiera('install_base')}/crash"

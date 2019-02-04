@@ -1,0 +1,10 @@
+<% unless @datastax_agent_heapdump_dir.nil? -%>
+DATASTAX_AGENT_HEAPDUMP_DIR=<%= @datastax_agent_heapdump_dir %>
+<% end -%>
+if [ "x$DATASTAX_AGENT_HEAPDUMP_DIR" != "x" ]; then
+    JVM_OPTS="$JVM_OPTS -XX:HeapDumpPath=$DATASTAX_AGENT_HEAPDUMP_DIR/datastax-agent-`date +%s`-pid$$.hprof"
+fi
+
+JVM_OPTS="$JVM_OPTS -Xmx<%= @agent_heap %>"
+JVM_OPTS="$JVM_OPTS -Djclouds.mpu.parts.magnitude=100000"
+JVM_OPTS="$JVM_OPTS -Djclouds.mpu.parts.size=16777216"

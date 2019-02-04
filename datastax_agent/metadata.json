@@ -1,0 +1,16 @@
+{
+  "name": "datastax_agent",
+  "version": "0.1.0",
+  "author": "DataStax",
+  "summary": "DataStax Agent configuration management manifests",
+  "license": "PRIVATE",
+  "source": "",
+  "project_page": null,
+  "issues_url": null,
+  "dependencies": [
+    {
+      "name":"puppetlabs/stdlib",
+      "version_requirement":">= 1.0.0"
+    }
+  ]
+}
