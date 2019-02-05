@@ -1,5 +1,5 @@
 ---
-cluster: "6003"
+cluster: "unassigned"
 role: "unassigned"
 initial_token: 0
 rack: "RAC1"
