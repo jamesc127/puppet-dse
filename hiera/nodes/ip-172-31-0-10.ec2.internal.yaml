@@ -1,0 +1,5 @@
+---
+cluster: "6003"
+role: "unassigned"
+initial_token: 0
+rack: "RAC1"
