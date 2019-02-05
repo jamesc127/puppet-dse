@@ -18,7 +18,7 @@ class dse::install {
   $dseversion = '5.0.15' #TODO see if we can get this on the command line
   #TODO can we get this to do a tarball installation?
   case $::osfamily {
-      'redhat' :{
+      'RedHat' :{
         yumrepo { 'datastax':
           enabled  => 1,
           descr    => 'DataStax Repo for DataStax Enterprise',
@@ -37,7 +37,7 @@ class dse::install {
           require => Yumrepo['datastax']
         }
       }
-      'debian' :{
+      'Debian' :{
         apt::source { 'datastax':
           ensure => 'present',
           comment  => 'DataStax Repo for DataStax Enterprise',
