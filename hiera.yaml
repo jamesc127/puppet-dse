@@ -1,10 +1,13 @@
----
-:backends: yaml
-:yaml:
-  :datadir: ./hiera
-:hierarchy:
-  - nodes/%{hostname}
-  - clusters/%{cluster}
-  - roles/%{role}
-  - defaults
-:logger: console
+version: 5
+defaults:
+  datadir: ./hiera
+  data_hash: yaml_data
+hierarchy:
+  - name: "Nodes"
+    path: "nodes/%{hostname}.yaml"
+  - name: "Clusters"
+    path: "clusters/%{cluster}.yaml"
+  - name: "Roles"
+    path: "roles/%{role}.yaml"
+  - name: "Defaults"
+    path: "defaults.yaml"
