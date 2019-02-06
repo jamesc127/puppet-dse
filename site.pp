@@ -1,4 +1,3 @@
-lookup('classes', {merge => unique}).include
 node default {
   # Define role base on hiera content
   # $role = hiera('role', 'bootstrap')
@@ -6,5 +5,6 @@ node default {
   # $cluster = hiera('cluster', 'unassigned')
   $cluster = lookup('cluster',undef,undef,'unassigned')
   # Include classes defined in heira
-  # hiera_include('classes')
+  hiera_include('classes')
+  # lookup('classes', {merge => unique}).include
 }
