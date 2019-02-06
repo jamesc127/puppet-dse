@@ -20,7 +20,7 @@ class dse::spark::spark_env::params {
   $spark_worker_memory = undef
   $spark_worker_cores = undef
   $driver_memory = undef
-  $worker_dir = undef
-  $local_dirs = undef
-  $worker_log_dir = undef
+  $worker_dir = '/var/lib/spark/worker/'
+  $local_dirs = '/var/lib/spark/'
+  $worker_log_dir = '/var/log/spark/worker/'
 }
