@@ -30,9 +30,8 @@ class dse::install {
         package {'epel-release':
           ensure => 'installed',
         }
-        class { 'java':
-          distribution => 'jdk',
-          version => '8',
+        java{'jdk8':
+          ensure => 'present'
         }
         package { "dse-full-${dseversion}-1" :
           ensure => 'installed',
@@ -56,9 +55,8 @@ class dse::install {
           ensure => 'present',
           server => 'https://debian.datastax.com/debian/repo_key',
         }
-        class { 'java':
-          distribution => 'jdk',
-          version => '8',
+        java{'jdk8':
+          ensure => 'present'
         }
         # Exec['apt_update']
         package{["dse-full=${dseversion}-1","dse-libhadoop2-client=${dseversion}-1","dse-libhadoop2-client-native=${dseversion}-1",
@@ -69,5 +67,6 @@ class dse::install {
           ensure => 'installed'
         }
       }
+      default: {fail("operating system ${osfamily} not supported")}
     }
   }
