@@ -17,9 +17,10 @@
 #
 class dse::config {
   anchor { 'dse::config::begin': } ->
-  class { '::dse::dse_defaults': } ->
+  class { '::dse::dse_default': } ->
   class { '::dse::dse_yaml': } ->
   class { '::dse::cassandra': } ->
+  class { '::dse::dse_env_sh': } ->
   class { '::dse::spark': } ->
   anchor { 'dse::config::end': }
 }

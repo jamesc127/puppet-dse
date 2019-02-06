@@ -1,16 +1,17 @@
 classes:
-  - dse::dse_yaml
-  - dse::dse_default
-  - dse::dse_env_sh
-  - dse::cassandra::cassandra_yaml
-  - dse::cassandra::cassandra_env
-  - dse::cassandra::cassandra_rackdc
-  - dse::spark::spark_defaults
-  - dse::spark::spark_env
-  - datastax_agent::address
-  - datastax_agent::datastax_agent_default
-  - datastax_agent::log4j_properties
-  - datastax_agent::datastax_agent_env
+  - dse::init
+#  - dse::dse_yaml
+#  - dse::dse_default
+#  - dse::dse_env_sh
+#  - dse::cassandra::cassandra_yaml
+#  - dse::cassandra::cassandra_env
+#  - dse::cassandra::cassandra_rackdc
+#  - dse::spark::spark_defaults
+#  - dse::spark::spark_env
+#  - datastax_agent::address
+#  - datastax_agent::datastax_agent_default
+#  - datastax_agent::log4j_properties
+#  - datastax_agent::datastax_agent_env
 
 dse::cassandra::cassandra_yaml::cluster_name: Test Cluster
 datastax_agent::address::opscenter_master_ip: 127.0.0.1
