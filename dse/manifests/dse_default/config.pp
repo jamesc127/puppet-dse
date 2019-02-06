@@ -13,11 +13,11 @@
 #
 class dse::dse_default::config inherits dse::dse_default {
   notify{'dse::dse_default::config':
-    message => "path is ${dse::dse_default::path}"
+    message => "path is ${dse::dse_default::params::path}"
   }
   file { 'dse.default' :
     ensure  => present,
-    path    => $dse::dse_default::path,
+    path    => $dse::dse_default::params::path,
     owner   => 'cassandra',
     group   => 'cassandra',
     mode    => '0644',
