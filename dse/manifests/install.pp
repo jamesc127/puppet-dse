@@ -18,6 +18,9 @@ class dse::install {
   #TODO can we get this to do a tarball installation?
   case $::osfamily {
       'RedHat' :{
+        notify {'dse::install':
+          message => "os family is ${osfamily}"
+        }
         yumrepo { 'datastax':
           enabled  => 1,
           descr    => 'DataStax Repo for DataStax Enterprise',
@@ -38,6 +41,9 @@ class dse::install {
       }
       'Debian' :{
         include apt
+        notify {'dse::install':
+          message => "os family is ${osfamily}"
+        }
         apt::source { 'datastax':
           ensure => 'present',
           comment  => 'DataStax Repo for DataStax Enterprise',
@@ -54,7 +60,7 @@ class dse::install {
           distribution => 'jdk',
           version => '8',
         }
-        Exec['apt_update']
+        # Exec['apt_update']
         package{["dse-full=${dseversion}-1","dse-libhadoop2-client=${dseversion}-1","dse-libhadoop2-client-native=${dseversion}-1",
           "dse=${dseversion}-1","dse-hive=${dseversion}-1","dse-libtomcat=${dseversion}-1","dse-libsqoop=${dseversion}-1",
           "dse-liblog4j=${dseversion}-1","dse-pig=${dseversion}-1","dse-libsolr=${dseversion}-1","dse-libmahout=${dseversion}-1",
