@@ -27,9 +27,9 @@ class dse::install {
           baseurl  => 'https://james.colvin%40datastax.com:abc123@rpm.datastax.com/enterprise',
           gpgcheck => 0,
         }
-        package {'epel-release':
-          ensure => 'installed',
-        }
+        # package {'epel-release':
+        #   ensure => 'installed',
+        # }
         package { "dse-full-${dseversion}-1" :
           ensure => 'installed',
           require => Yumrepo['datastax']
