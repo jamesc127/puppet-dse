@@ -12,6 +12,9 @@
 # Copyright 2016 Christopher Bradford
 #
 class dse::dse_default::config inherits dse::dse_default {
+  notify{'dse::dse_default::config':
+    message => "path is ${dse::dse_default::path}"
+  }
   file { 'dse.default' :
     ensure  => present,
     path    => $dse::dse_default::path,
