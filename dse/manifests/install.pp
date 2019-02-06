@@ -30,7 +30,7 @@ class dse::install {
         package {'epel-release':
           ensure => 'installed',
         }
-        java{'jdk8':
+        java::oracle{'jdk8':
           ensure => 'present'
         }
         package { "dse-full-${dseversion}-1" :
@@ -55,7 +55,7 @@ class dse::install {
           ensure => 'present',
           server => 'https://debian.datastax.com/debian/repo_key',
         }
-        java{'jdk8':
+        java::oracle{'jdk8':
           ensure => 'present'
         }
         # Exec['apt_update']
