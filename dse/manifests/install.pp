@@ -15,6 +15,10 @@ class dse::install {
   #   #   message => 'DSE installation is managed by another team.'
   $dseversion = '5.0.15' #TODO see if we can get this on the command line
   #TODO can we get this to do a tarball installation?
+  include java
+  class {'java':
+    distribution => 'jdk'
+  }
   case $::osfamily {
       'RedHat' :{
         notify {'dse::install':
@@ -28,10 +32,6 @@ class dse::install {
         }
         package {'epel-release':
           ensure => 'installed',
-        }
-        include java
-        class {'java':
-          distribution => 'jdk',
         }
         package { "dse-full-${dseversion}-1" :
           ensure => 'installed',
@@ -54,10 +54,6 @@ class dse::install {
         apt::key { 'datastax':
           ensure => 'present',
           server => 'https://debian.datastax.com/debian/repo_key',
-        }
-        include java
-        class {'java':
-          distribution => 'jdk',
         }
         # Exec['apt_update']
         package{["dse-full=${dseversion}-1","dse-libhadoop2-client=${dseversion}-1","dse-libhadoop2-client-native=${dseversion}-1",
