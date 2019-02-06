@@ -14,7 +14,7 @@
 class dse::cassandra::cassandra_rackdc::config inherits dse::cassandra::cassandra_rackdc {
   file { 'cassandra-rackdc.properties' :
     ensure  => present,
-    path    => $dse::cassandra::cassandra_rackdc::path,
+    path    => $dse::cassandra::cassandra_rackdc::params::path,
     owner   => 'cassandra',
     group   => 'cassandra',
     mode    => '0644',

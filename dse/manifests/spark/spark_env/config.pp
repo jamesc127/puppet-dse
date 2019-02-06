@@ -14,7 +14,7 @@
 class dse::spark::spark_env::config inherits dse::spark::spark_env {
   file { 'spark-env.sh' :
     ensure  => present,
-    path    => $dse::spark::spark_env::path,
+    path    => $dse::spark::spark_env::params::path,
     owner   => 'cassandra',
     group   => 'cassandra',
     mode    => '0644',
@@ -23,7 +23,7 @@ class dse::spark::spark_env::config inherits dse::spark::spark_env {
 
   file { 'spark_worker_dir':
     ensure  => directory,
-    path    => $dse::spark::spark_env::worker_dir,
+    path    => $dse::spark::spark_env::params::worker_dir,
     owner   => 'cassandra',
     group   => 'cassandra',
     mode    => '0644',
@@ -32,7 +32,7 @@ class dse::spark::spark_env::config inherits dse::spark::spark_env {
 
   file { 'spark_local_dirs':
     ensure  => directory,
-    path    => $dse::spark::spark_env::local_dirs,
+    path    => $dse::spark::spark_env::params::local_dirs,
     owner   => 'cassandra',
     group   => 'cassandra',
     mode    => '0644',

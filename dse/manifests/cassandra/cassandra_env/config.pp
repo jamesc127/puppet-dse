@@ -14,7 +14,7 @@
 class dse::cassandra::cassandra_env::config inherits dse::cassandra::cassandra_env {
   file { 'cassandra-env.sh' :
     ensure  => present,
-    path    => $dse::cassandra::cassandra_env::path,
+    path    => $dse::cassandra::cassandra_env::params::path,
     owner   => 'cassandra',
     group   => 'cassandra',
     mode    => '0644',

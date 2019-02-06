@@ -14,7 +14,7 @@
 class dse::cassandra::cassandra_yaml::config inherits dse::cassandra::cassandra_yaml {
   file { 'cassandra.yaml' :
     ensure  => present,
-    path    => $dse::cassandra::cassandra_yaml::path,
+    path    => $dse::cassandra::cassandra_yaml::params::path,
     owner   => 'cassandra',
     group   => 'cassandra',
     mode    => '0644',

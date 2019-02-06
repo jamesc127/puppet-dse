@@ -14,7 +14,7 @@
 class dse::spark::spark_defaults::config inherits dse::spark::spark_defaults {
   file { 'spark-defaults.conf' :
     ensure  => present,
-    path    => $dse::spark::spark_defaults::path,
+    path    => $dse::spark::spark_defaults::params::path,
     owner   => 'cassandra',
     group   => 'cassandra',
     mode    => '0644',
