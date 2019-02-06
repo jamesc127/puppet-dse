@@ -16,9 +16,6 @@ class dse::install {
   $dseversion = '5.0.15' #TODO see if we can get this on the command line
   #TODO can we get this to do a tarball installation?
   include java
-  class {'java':
-    distribution => 'jdk'
-  }
   case $::osfamily {
       'RedHat' :{
         notify {'dse::install':
