@@ -12,6 +12,9 @@
 # Copyright 2016 Christopher Bradford
 #
 class dse::dse_yaml::config inherits dse::dse_yaml {
+  notify{'dse::dse_yaml::config':
+    message => "path is ${dse::dse_yaml::params::path}"
+  }
   file { 'dse.yaml' :
     ensure  => present,
     path    => $dse::dse_yaml::params::path,
