@@ -16,7 +16,7 @@
 # Copyright 2016 Christopher Bradford
 #
 class dse::cassandra::cassandra_env::params {
-  $path = '/etc/dse/cassandra/conf/cassandra-env.sh'
+  $path = '/etc/dse/cassandra/cassandra-env.sh'
   $max_heap_size = undef
   $heap_newsize = undef
   $cassandra_heapdump_dir = undef
