@@ -16,7 +16,7 @@
 # Copyright 2016 Christopher Bradford, unless otherwise noted.
 #
 class dse::dse_env_sh::params {
-  $path = '/etc/dse/dse.yaml'
+  $path = '/etc/dse/dse-env.sh'
   $java_home = undef
   $dse_home = '/usr/share/dse'
 }
