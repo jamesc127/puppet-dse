@@ -15,7 +15,7 @@
 # Copyright 2016 Christopher Bradford
 #
 class dse::cassandra::cassandra_rackdc::params {
-  $path = '/etc/dse/cassandra/conf/cassandra-rackdc.properties'
+  $path = '/etc/dse/cassandra/cassandra-rackdc.properties'
   $dc = 'DC1'
   $rack = 'RAC1'
   $dc_suffix = undef
