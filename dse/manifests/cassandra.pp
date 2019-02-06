@@ -20,6 +20,6 @@ class dse::cassandra {
   class { '::dse::cassandra::cassandra_yaml': } ->
   class { '::dse::cassandra::cassandra_env': } ->
   class { '::dse::cassandra::cassandra_rackdc': } ->
-  class { '::dse::cassandra::twcs_jar': } ->
+  # class { '::dse::cassandra::twcs_jar': } ->
   anchor { 'dse::cassandra::end': }
 }
