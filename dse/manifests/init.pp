@@ -16,7 +16,7 @@
 #
 # Copyright 2016 Christopher Bradford
 #
-class dse {
+class dse::init {
   anchor { 'dse::begin': } ->
   class { '::dse::install': } ->
   class { '::dse::config': } ~>
