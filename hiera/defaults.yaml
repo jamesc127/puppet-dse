@@ -4,8 +4,8 @@ initial_token: ~
 role: unassigned
 cluster: unassigned
 
-dse_home: "%{hiera('install_base')}/dse"
-java_home: "%{hiera('install_base')}/java/jdk1.8.0_121"
+dse_home: "%{hiera('install_base')}/dse" #TODO fix dse_home
+java_home: "%{hiera('install_base')}/java/jdk1.8.0_121" #TODO fix java_home
 
 # Settings below are defaults for the *entire* environment
 # Override values in appropriate an host, role, or cluster YAML file

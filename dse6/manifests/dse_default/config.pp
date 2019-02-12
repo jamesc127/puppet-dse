@@ -1,4 +1,4 @@
-# == Class: dse::dse_default::config
+# == Class: dse5::dse_default::config
 #
 # Manages DSE dse.default configuration file. This file manages configuration
 # parameters related to DSE as a whole.
@@ -11,13 +11,13 @@
 #
 # Copyright 2016 Christopher Bradford
 #
-class dse::dse_default::config inherits dse::dse_default {
+class dse6::dse_default::config inherits dse6::dse_default {
   file { 'dse.default' :
     ensure  => present,
-    path    => $dse::dse_default::params::path,
+    path    => $dse6::dse_default::path,
     owner   => 'cassandra',
     group   => 'cassandra',
     mode    => '0644',
-    content => template('dse/dse/dse.default.erb')
+    content => template('dse5/dse/dse.default.erb')
   }
 }

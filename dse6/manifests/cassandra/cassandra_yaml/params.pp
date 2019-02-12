@@ -1,8 +1,8 @@
-# == Class: dse::cassandra::cassandra_yaml::params
+# == Class: dse6::cassandra::cassandra_yaml::params
 #
 # Manages DSE Cassandra cassandra.yaml default parameters. These are consumed
-# by dse::cassandra::cassandra_yaml. These values should be overwritten with
-# parameters passed to dse::cassandra::cassandra_yaml::config.
+# by dse6::cassandra::cassandra_yaml. These values should be overwritten with
+# parameters passed to dse6::cassandra::cassandra_yaml::config.
 #
 # Note parameters exposed through Puppet are intentionally kept minimal and only
 # reflect changes made within this environment.
@@ -15,7 +15,7 @@
 #
 # Copyright 2016 Christopher Bradford
 #
-class dse::cassandra::cassandra_yaml::params {
+class dse6::cassandra::cassandra_yaml::params {
   $path = '/etc/dse/cassandra/cassandra.yaml'
 
   $cluster_name = 'Test Cluster'
@@ -27,6 +27,7 @@ class dse::cassandra::cassandra_yaml::params {
   $concurrent_reads = 32
   $concurrent_writes = 32
   $concurrent_counter_writes = 32
+  $concurrent_materialized_view_writes = 32
   $memtable_allocation_type = 'heap_buffers'
   $listen_address = 'localhost'
   $rpc_address = 'localhost'
@@ -50,12 +51,13 @@ class dse::cassandra::cassandra_yaml::params {
   $data_file_directories = ['/var/lib/cassandra/data']
   $commitlog_directory = '/var/lib/cassandra/commitlog'
   $saved_caches_directory = '/var/lib/cassandra/saved_caches'
+  $hints_directory = '/var/lib/cassandra/hints'
   $commitlog_segment_recycling = undef
-  $memtable_cleanup_threshold = 0.11
-  $memtable_flush_writers = 16
-  $concurrent_compactors = 16
+  $memtable_cleanup_threshold = undef
+  $memtable_flush_writers = undef
+  $concurrent_compactors = undef
   $stream_throughput_outbound_megabits_per_sec = 200
   $phi_convict_threshold = undef
-  $otc_coalescing_strategy = 'TIMEHORIZON' # nil?
+  $otc_coalescing_strategy = undef
   $otc_coalescing_window_us = 200 # nil?
 }
