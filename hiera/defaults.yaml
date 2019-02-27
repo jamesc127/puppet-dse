@@ -1,4 +1,4 @@
-install_base: /opt
+install_base: /opt #TODO change install base
 initial_token: ~
 
 role: unassigned

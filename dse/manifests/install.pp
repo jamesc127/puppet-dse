@@ -18,18 +18,18 @@ class dse::install {
   include java
   case $::osfamily {
       'RedHat' :{
-        notify {'dse::install':
-          message => "os family is ${osfamily}"
-        }
+        # notify {'dse::install':
+        #   message => "os family is ${osfamily}"
+        # }
         yumrepo { 'datastax':
           enabled  => 1,
           descr    => 'DataStax Repo for DataStax Enterprise',
           baseurl  => 'https://james.colvin%40datastax.com:abc123@rpm.datastax.com/enterprise',
           gpgcheck => 0,
         }
-        # package {'epel-release':
-        #   ensure => 'installed',
-        # }
+        package {'epel-release':
+          ensure => 'installed',
+        }
         package { "dse-full-${dseversion}-1" :
           ensure => 'installed',
           require => Yumrepo['datastax']
@@ -37,9 +37,9 @@ class dse::install {
       }
       'Debian' :{
         include apt
-        notify {'dse::install':
-          message => "os family is ${osfamily}"
-        }
+        # notify {'dse::install':
+        #   message => "os family is ${osfamily}"
+        # }
         apt::source { 'datastax':
           ensure => 'present',
           comment  => 'DataStax Repo for DataStax Enterprise',
